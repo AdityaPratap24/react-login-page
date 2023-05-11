@@ -1,10 +1,12 @@
 import { useState, useRef, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import { appContext } from '../../Store/Context';
 
 import classes from './AuthForm.module.css';
 
 const AuthForm = () => {
 
+  let history=useHistory();
   let ctx=useContext(appContext);
   const [isLogin, setIsLogIn] = useState(false);
 
@@ -50,14 +52,12 @@ const AuthForm = () => {
           ctx.token=data.idToken;
           console.log(ctx);
           ctx.setIsLoggedIn(true);
+          history.push('/profile')
         })
         } else {
         console.log(res)
           return res.json().then((data) => {
             let errorMessage = 'Authentication failed!';
-            // if (data && data.error && data.error.message) {
-            //   errorMessage = data.error.message;
-            // }
             alert(errorMessage);
           });
         }
