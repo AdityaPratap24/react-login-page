@@ -31,7 +31,7 @@ const AuthForm = () => {
     setIsLoading(true);   
     if (isLogin) {
       fetch(
-        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyB7_MYIxXslBhdwbwg4vFCvLqF4rsOW3_o',
+        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyByOrvUk-TKCvmY39IHjB_EQvxRkvKF3Wc',
         {
           method: 'POST',
           body: JSON.stringify({
@@ -52,6 +52,10 @@ const AuthForm = () => {
           console.log("idTOken:",data.idToken);
           ctx.setToken(data.idToken);
           localStorage.setItem("idToken",data.idToken);
+          setTimeout(() => {
+          localStorage.removeItem("idToken");
+          ctx.setToken(null);
+          }, 5*60*1000);
           ctx.setIsLoggedIn(true);
           history.push('/profile')
         })
@@ -66,7 +70,7 @@ const AuthForm = () => {
 
     } else {
       fetch(
-        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyB7_MYIxXslBhdwbwg4vFCvLqF4rsOW3_o',
+        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyByOrvUk-TKCvmY39IHjB_EQvxRkvKF3Wc',
         {
           method: 'POST',
           body: JSON.stringify({

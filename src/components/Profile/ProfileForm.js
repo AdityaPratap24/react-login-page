@@ -14,7 +14,7 @@ const handleChangePassword=(e)=>{
     returnSecureToken: true,
   })
 fetch(
-  'https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyB7_MYIxXslBhdwbwg4vFCvLqF4rsOW3_o',
+  'https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyByOrvUk-TKCvmY39IHjB_EQvxRkvKF3Wc',
   {
     method: 'POST',
     body: JSON.stringify({
