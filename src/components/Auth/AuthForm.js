@@ -51,6 +51,7 @@ const AuthForm = () => {
          responce.then((data)=>{
           console.log("idTOken:",data.idToken);
           ctx.setToken(data.idToken);
+          localStorage.setItem("idToken",data.idToken);
           ctx.setIsLoggedIn(true);
           history.push('/profile')
         })
