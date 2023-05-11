@@ -44,13 +44,13 @@ const AuthForm = () => {
           },
         }
       ).then((res) => {
+        console.log(ctx);
         setIsLoading(false);
         if (res.ok) {
          let responce=res.json();
          responce.then((data)=>{
           console.log("idTOken:",data.idToken);
-          ctx.token=data.idToken;
-          console.log(ctx);
+          ctx.setToken(data.idToken);
           ctx.setIsLoggedIn(true);
           history.push('/profile')
         })
@@ -83,7 +83,7 @@ const AuthForm = () => {
           let responce=res.json();
          responce.then((data)=>{
           console.log("idTOken:",data.idToken);
-          ctx.token=data.idToken;
+          ctx.setToken(data.idToken);
           console.log(ctx);
           ctx.isLoggedin(true);
         })
@@ -122,7 +122,7 @@ const AuthForm = () => {
             className={classes.toggle}
             onClick={switchAuthModeHandler}
           >
-            {ctx.isLogin ? 'Create new account' : 'Login with existing account'}
+            {isLogin ? 'Create new account' : 'Login with existing account'}
           </button>
         </div>
       </form>
